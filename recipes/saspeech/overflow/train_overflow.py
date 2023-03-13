@@ -21,7 +21,7 @@ dataset_config = BaseDatasetConfig(
 
 audio_config = BaseAudioConfig(
     sample_rate=22050,
-    resample = True,
+    resample=False,
     do_trim_silence=True,
     trim_db=60.0,
     signal_norm=False,
