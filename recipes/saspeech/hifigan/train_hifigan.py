@@ -42,7 +42,7 @@ config = HifiganConfig(
     mixed_precision=False,
     lr_gen=1e-4,
     lr_disc=1e-4,
-    data_path=os.path.join(output_path, "../saspeech_raw_wav_large/"),
+    data_path=os.path.join(output_path, "../data/saspeech_all_windowed/"),
     output_path=output_path,
     dashboard_logger = 'wandb',
 )
