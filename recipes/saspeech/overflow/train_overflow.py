@@ -16,7 +16,7 @@ output_path = os.path.dirname(os.path.abspath(__file__))
 
 # init configs
 dataset_config = BaseDatasetConfig(
-    formatter="ljspeech", meta_file_train="metadata.csv", path=os.path.join("data", "../data/saspeech_gold_standard_resampled/")
+    formatter="ljspeech", meta_file_train="metadata.csv", path=os.path.join("..", "data", "saspeech_gold_standard_resampled/")
 )
 
 audio_config = BaseAudioConfig(
