@@ -16,8 +16,7 @@ output_path = os.path.dirname(os.path.abspath(__file__))
 
 # init configs
 dataset_config = BaseDatasetConfig(
-    #formatter="ljspeech", meta_file_train="metadata.csv", path=os.path.join("data", "saspeech_gold_clean/")
-    formatter="ljspeech", meta_file_train="metadata.csv", path=os.path.join("data", "saspeech_gold_nikud/")
+    formatter="ljspeech", meta_file_train="metadata.csv", path=os.path.join("data", "../data/saspeech_gold_standard_resampled/")
 )
 
 audio_config = BaseAudioConfig(
@@ -35,12 +34,11 @@ audio_config = BaseAudioConfig(
 )
 
 config = OverflowConfig(  # This is the config that is saved for the future use
-    run_name="overflow_saspeech_gold_nikud",
+    run_name="overflow_saspeech_gold",
     audio=audio_config,
     batch_size=10,
     shuffle=True,
     drop_last=True,
-    #start_by_longest=True,
     eval_batch_size=16,
     num_loader_workers=6,
     num_eval_loader_workers=4,
@@ -49,9 +47,10 @@ config = OverflowConfig(  # This is the config that is saved for the future use
     epochs=1000,
     text_cleaner="basic_cleaners",
     use_phonemes=False,
-    # phoneme_language="en-us",
-    # phoneme_cache_path=os.path.join(output_path, "phoneme_cache"),
     precompute_num_workers=8,
+    # IMPORTANT - if you change datasets, recompute mel statistics, either by
+    #             changing mel_statistics_parameter_name or by setting force_generate_statistics=True
+    #             It's important for model performance
     mel_statistics_parameter_path=os.path.join(output_path, "sa_parameters.pt"),
     force_generate_statistics=False,
     print_step=1,
@@ -65,7 +64,7 @@ config = OverflowConfig(  # This is the config that is saved for the future use
         is_unique=True
     ),
     lr=5e-4,
-    test_sentences=['עכשיו, לאט לאט, נסו לדמיין סופרמרקט.'],
+    test_sentences=["עַכְשָׁיו, לְאַט לְאַט, נָסוּ לְדַמְיֵין סוּפֶּרְמַרְקֶט."],
 )
 
 # INITIALIZE THE AUDIO PROCESSOR
