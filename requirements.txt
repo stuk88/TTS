@@ -42,6 +42,8 @@ gruut[de,es,fr]==2.2.3
 jamo
 nltk
 g2pkk>=0.1.1
+# deps for hebrew
+hebrew
 # deps for bangla
 bangla
 bnnumerizer
